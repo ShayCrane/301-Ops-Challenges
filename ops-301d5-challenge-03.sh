@@ -14,7 +14,7 @@
 # - https://linuxhint.com/bash_conditional_statement/
 # - https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
 
-# The script does not loop, but I got these very simple commands working, while unsure why they wouldn't work previously. 
+# The script does not loop, but I got these very simple commands working. 
 
 echo "Options Menu:" 
 echo "  1) Print: Hello World!" 
