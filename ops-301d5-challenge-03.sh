@@ -1,4 +1,4 @@
-A#!/bin/bash
+#!/bin/bash
 
 # Script: Ops Challenge Class 03 - File Permissions 
 # Author: Shay Crane
@@ -10,9 +10,11 @@ A#!/bin/bash
 # - IP info (print the network adapter information for this computer)
 # - exits script
 
-B# Parts of the script were inspired by: 
+# Parts of the script were inspired by: 
 # - https://linuxhint.com/bash_conditional_statement/
 # - https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
+
+# The script does not loop, but I got these very simple commands working, while unsure why they wouldn't work previously. 
 
 echo "Options Menu:" 
 echo "  1) Print: Hello World!" 
@@ -27,23 +29,17 @@ elif [ $NUM -eq 2 ]; then
     ping -c 5 127.0.0.1
 elif [ $NUM -eq 3 ]; then
     ifconfig
-elif [ $NUM -eq 4 ]; then
+# elif [ $NUM -eq 4 ]; then
+else    
+    echo "You have exited the menu."
     exit 0 
 fi
 
 
-# if [[ $NUM == 1 ]]; then
-
-# read NUM
-#case $NUM in 
-#    1) echo "Hello World!" ;;
-#    2) ping -c 5 "127.0.0.1" ;;
-#    3) ifconfig | grep -v 127.0.0.1 ;;
-#    4) echo "You have exited the menu." ;;
-# B   exit ;;
-# esac
  
-
+# versions of the script i tried: 
+# None worked. 
+#
 # PS3=Options Menu: 
 # options=(Print Hello World! to the screen" "Ping Loopback" "Network Adapter Info" "Exit Menu)
 # select opt in "${options[@]}"
@@ -65,28 +61,31 @@ fi
 # done
 
 
-
-# Below is a record of the second attempt at writing the above script, kept for posterity and learning purposes.
-# Parts of the script were inspired by: 
-# - https://linuxhint.com/bash_conditional_statement/
-# - https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
-
 # echo "Options Menu:" 
-# echo "1. Hello World" 
-# Becho "2. Ping Loopback" 
-# echo "3. Network Adapter Info" 
-# echo "4. Exit"
-# echo "What would you like to do? Enter the option number below:"
+# echo "  1) Print: Hello World!" 
+# echo "  2) Ping Loopback" 
+# echo "  3) Network Adapter Info" 
+# echo "  4) Exit"
+# # Infinite for loop with break
 # read NUM
-
-# if [ "$NUM" = 1 ]; then 
+# for (( ; ; ))
+# do
+#     echo "Iteration: ${NUM}"
+#     (( $NUM++ ))
+#     if [[ $NUM -lt 2 ]]
+#     then
 #     echo "Hello World!"
-# elif [ "$NUM" = 2 ]; then
-#     ping -c 5 127.0.0.1
-# elif [ "$NUM" = 3 ]; then
-#     ifconfig -a
-#B elif [ "$NUM" = 4 ]; then
-#     exit 0
+    
+#     if [[ $NUM -lt 2 ]]
+#     then
+#     echo "Hello World!"
+
+#     if [[ $NUM -lt 2 ]]
+#     then
+#     echo "Hello World!"
+
+#     if [[ $NUM -lt 2 ]]
+#     then
+#         break;
 # fi
-
-
+# echo "You have exited the menu."
