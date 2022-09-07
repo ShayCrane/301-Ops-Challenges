@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script: Ops Challenge Class 03 - File Permissions 
+# Script: Ops Challenge Class 03 - System Info 
 # Author: Shay Crane
 # Date of latest revisions 09/01/2022
 # Purpose: Creates a bash script that launches a menu system with the following options for the user to choose from: 
