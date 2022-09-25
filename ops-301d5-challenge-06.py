@@ -2,7 +2,7 @@
 
 # Script Name: Bash in Python
 # Author: Shay Crane
-# Date of last revision: 09/06/2022
+# Date of last revision: 09/23/2022
 # Description of purpose: Create a Python script that executes the bash script I created in course 201 that fetches the hardware specs of my pc.
 
 # Requirements:
