@@ -2,7 +2,7 @@
 
 # Script Name: GET requests
 # Author: Shay Crane
-# Date of last revision: 09/15/2022
+# Date of last revision: 09/15/2022; 09/23/2022
 # Purpose: a Python script that peforms a GET request with the user's input 
 
 # Prompt the user to type a string input as the variable for your destination URL.
@@ -45,7 +45,7 @@ print("  5) HEAD")
 print("  6) PATCH")
 print("  7) OPTIONS")
 
-opt = input("Please choose an option and enter its number here: ")
+opt = int(input("Please choose an option and enter its number here: "))
 
 # GET
 # POST
