@@ -1,71 +1,115 @@
 #!/bin/bash
 
-# Script Name: HAL's pod bay-- I mean LOG FILE-- clearing script
+# Script: Ops Challenge Class 03 - System Info 
 # Author: Shay Crane
-# Date of last revision: 09/02/2022
-# Description of purpose: A bash script that clears the contents of a given log or set of logs, and prints the contents of each before and after running the scripts. 
-# Declaration of variables: $LOGONE, $LOGTWO
-# Declaration of functions: N/A
+# Date of latest revisions 09/01/2022
+# Purpose: Creates a bash script that launches a menu system with the following options for the user to choose from: 
 
-# this script will print and then clear the contents of the following logs (or the directory the user inputs):
+# - prints Hello World to the screen
+# - ping self (pings this computer’s loopback address)
+# - IP info (print the network adapter information for this computer)
+# - exits script
 
-# -  /var/log/syslog
-# -  /var/log/wtmp
+# Parts of the script were inspired by: 
+# https://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
 
+# I have completely overhauled my original script.  I've left both previous versions below the working script for review.  
 
-# I referred to the following website to reference a command for clearing log files: http://osr507doc.xinuos.com/en/OSAdminG/fsT.clearlog.html
-
-# My script includes two variables so that it is flexible and adaptable.  
-# In its current form, it will only peform the operations on two files at a time, but this can be scaled up to any number of log files.
-# This script is best used for a smaller number of log files, up to the number of directories the user will be willing to manually input. 
-
-# I had a tough week, so I decided to have a little fun with this script by adding some classic 2001: A Space Odyssey quotes from HAL, the "sentient" AI.
-
-echo "welcome to the automated log file clearing tool. "
-sleep 1
-echo "my name is HAL."
-echo "I am putting myself to the fullest possible use, which is more than any concious entity can hope to achieve. "
-sleep 1
-echo "just don't ask me to 'open the pod bay doors...'"
-echo "however, i *will* print your chosen log file contents to this screen, then clear the contents of the log file(s)."
-sleep 1
-echo "but i will only process two log files per script run."
-sleep 1
-# main
-echo "input log file directory 1 (ex: /var/log/syslog): "
-read LOGONE
-
-echo "input log file directory 2 (ex: /var/log/wtmp): "
-read LOGTWO
-
-echo "printing contents of $LOGONE... one moment please..."
-sleep 2
-
-find "$LOGONE"  
-cat  "$LOGONE"  
-sleep 1
-echo "clearing contents of $LOGONE... "
-sleep 2 
-echo "confirming $LOGONE contents cleared..."
-cat /dev/null > $LOGONE
-echo "confirmed."
-sleep 2
-
-echo "printing contents of $LOGTWO... one moment please..."
-sleep 2
-
-find "$LOGTWO"  
-cat  "$LOGTWO"  
-sleep 1
-echo "clearing contents of $LOGTWO..."
-sleep 2 
-echo "confirming  $LOGTWO contents cleared..."
-cat /dev/null > $LOGTWO
-echo "confirmed."
-sleep 1
-echo "this is HAL signing off.  thank you for using the automated pod bay-- i mean LOG FILE-- clearing tool. "
-sleep 1
-echo "I am putting myself to the fullest possible use, which is more than any concious entity can hope to achieve. "
-# End
+PS3='Please enter your choice: '
+options=("Hello World!" "Ping your pc's loopback address" "Print IP info to the screen" "Quit menu")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Hello World!")
+            echo "you chose to ping Hello World! to your screen... hurray..."
+            echo "Hello World!"
+            ;;
+        "Ping your pc's loopback address")
+            echo "you chose to ping your loopback address... and there was much rejoicing... yay..."
+            ping -c 5 127.0.0.1 
+            ;;
+        "Print IP info to the screen")
+            echo "you chose to print your ip info to the screen... woah, slow down there, friend... don't get too"
+            ifconfig 
+            ;;
+        "Quit menu")
+            break
+            ;;
+        *) echo "invalid option";;
+    esac
+done
 
 
+# echo "Options Menu:" 
+# echo "  1) Print: Hello World!" 
+# echo "  2) Ping Loopback" 
+# echo "  3) Network Adapter Info" 
+# echo "  4) Exit"
+
+# read NUM
+# if [ $NUM -eq 1 ]; then 
+#     echo "Hello World!"
+# elif [ $NUM -eq 2 ]; then
+#     ping -c 5 127.0.0.1
+# elif [ $NUM -eq 3 ]; then
+#     ifconfig
+# # elif [ $NUM -eq 4 ]; then
+# else    
+#     echo "You have exited the menu."
+#     exit 0 
+# fi
+
+
+ 
+# versions of the script i tried: 
+# None worked. 
+#
+# PS3=Options Menu: 
+# options=(Print Hello World! to the screen" "Ping Loopback" "Network Adapter Info" "Exit Menu)
+# select opt in "${options[@]}"
+# do 
+#     case $opt in
+#         "Option 1")
+#             echo "Hello World!"
+#             ;;
+#         "Option 2")
+#             ping -c 5 127.0.0.1
+#             ;;
+#         "Option 3")
+#             ifconfig -a
+#             ;;
+#         "Exit Menu")
+#             break
+#             ;;
+#     esac
+# done
+
+
+# echo "Options Menu:" 
+# echo "  1) Print: Hello World!" 
+# echo "  2) Ping Loopback" 
+# echo "  3) Network Adapter Info" 
+# echo "  4) Exit"
+# # Infinite for loop with break
+# read NUM
+# for (( ; ; ))
+# do
+#     echo "Iteration: ${NUM}"
+#     (( $NUM++ ))
+#     if [[ $NUM -lt 2 ]]
+#     then
+#     echo "Hello World!"
+    
+#     if [[ $NUM -lt 2 ]]
+#     then
+#     echo "Hello World!"
+
+#     if [[ $NUM -lt 2 ]]
+#     then
+#     echo "Hello World!"
+
+#     if [[ $NUM -lt 2 ]]
+#     then
+#         break;
+# fi
+# echo "You have exited the menu."

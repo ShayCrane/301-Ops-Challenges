@@ -1,36 +1,25 @@
 #! /bin/bash
 
-# Script: Ops Challenge Class 03 - File Permissions 
+# Script: Ops Challenge Class 02 - Append; Date and Time 
 # Author: Shay Crane
-# Date of latest revisions 08/31/2022
-# Purpose: Alters file permissions of everything in a given directory.
+# Date of latest revisions 08/30/2022
+# Purpose: Copies a file in a specified directory to the current working directory, while appending the file name with a timestamp.
+
+
+# establishes the date and time variable
+today=$(date +%Y%m%d_%H-%M-%S)
+
+# locates the filepath/directory; this command inspired by the following article: https://linuxize.com/post/how-to-find-files-in-linux-using-the-command-line/
+find /var/log/syslog
+
+# copies directory and renames the file path with the date and time appended
+# I got help from a classmate after hours, but the script did not work after making the suggested changes. I continued by editing per the output from the terminal regarding what was missing from my commands. 
+cp /var/log/syslog $today.syslog
+
+# moves the directory copy to the current working directory; this command is not necessary.  cp does the whole job. 
+# mv -v syslog. /"$PWD"/$today.syslog
 
 
 
-# Prompts user for input directory path.
-echo enter path of the desired directory
-read DNUM 
+    
 
-
-# Prompts user for input permissions number (e.g. 777 to perform a chmod 777)
-echo enter your three digit permissions number
-read PNUM
-
-# Navigates to the directory input by the user and changes all files inside it to the input setting.
-# Thank you to the following website for guidance regarding the chmod command in this context: 
-# https://www.pluralsight.com/blog/it-ops/linux-file-permissions
-cd /"$DNUM" | chmod "$PNUM" /"$DNUM"
-
-
-# Prints to the screen the directory contents and the new permissions settings of everything in the directory.
-# Command found at: https://clas.uiowa.edu/linux/help/start/permissions
-ls -v -l "$DNUM" 
-
-
-
-
-
-# -----------------------------------------------
-# Pursue stretch goals if you are a more advanced user or have remaining lab time:
-# Design your script to output a log file of all actions that were taken by the script.
-# Design your script to output to the screen each file changed one by one, with a slight delay between each file changed.
