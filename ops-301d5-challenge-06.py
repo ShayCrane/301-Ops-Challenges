@@ -22,28 +22,30 @@ import os
 
 
 # declaring variables
-var = ("bash /home/shannon/201_Ops_Challenges/oc07.sh")
-
-
+var1 = ("lshw -class CPU | grep 'product\|vendor\|physical\|bus\|width'")
+var2 = ("lshw -class RAM | grep 'description\|physical\|size'")
+var3 = ("lshw -class DISPLAY | grep 'description\|product\|vendor\|physical\|bus\|width\|clock\|capabilities\|configuration\|resources'")
+var4 = ("lshw -class NETWORK | grep 'description\|product\|vendor\|physical\|bus\|logical\|version\|serial\|size\|size\|capacity\|width\|clock\|capabilities\|configuration\|resources'")
 # defining functions
 def pythonbash(command):
-    print("locating bash script that fetches system data...")
+    print("locating bash scripts that fetch system data...")
     print("running commands to execute bash script... one moment...")
     print () #to leave space btwn printed text
-    print ("script found. executing...")
+    print ("scripts found. executing...")
     print () 
     print ("just a moment...")
     print () 
-    print ("just a moment...")
-    print () 
-    print ("executing bash script oc07.sh...")
+    print ("executing bash scripts using lshw command...")
     os.system(command)
 
 
 # Main
 
 # calling back the variables
-pythonbash(var)
+pythonbash(var1)
+pythonbash(var2)
+pythonbash(var3)
+pythonbash(var4)
 print()
 print("the operation has ended.  that will be $550.00, please...")
 
